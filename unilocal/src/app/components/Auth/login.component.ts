@@ -29,7 +29,18 @@ export class LoginComponent {
   registrarUsuario() {
     this.authService.registrarUsuario(this.registerDto).then((response) => {
       console.log('Cliente registrado')
+    }).catch((error) => {
+      console.log('Error al registrar cliente', error)
     })
+  }
+
+    handleFotoSeleccionada(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      this.registerDto.fotoPerfil = file;
+    }
   }
 
 }
