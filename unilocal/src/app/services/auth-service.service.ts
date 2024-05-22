@@ -72,4 +72,13 @@ export class AuthServiceService {
   obtenerUsuarios() {
     return axios.get(`${environment.urlClient}/get-all-users`);
   }
+  
+  refresh() {
+    return axios.post<MensajeAuthDto>('/refresh', this.tokenService.getToken()).then((response) => {
+      this.tokenService.setToken(response.data.respuesta);
+    }).catch((error) => {
+      console.log('No se pudo actualizar el token:', error);
+    });
+  }
+
 }
