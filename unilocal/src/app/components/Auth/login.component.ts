@@ -1,10 +1,12 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
