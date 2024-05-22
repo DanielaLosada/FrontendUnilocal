@@ -1,7 +1,7 @@
 export const environment = {
-    urlImagen: 'http://localhost:8080/api/imagenes',
-    urlAuth: 'http://localhost:8080/api/auth',
-    urlClient: 'http://localhost:8080/api/cliente',
-    urlPlace: 'http://localhost:8080/api/negocio',
+    urlImagen: 'https://unilocal-ba06.onrender.com/api/imagenes',
+    urlAuth: 'https://unilocal-ba06.onrender.com/api/auth',
+    urlClient: 'https://unilocal-ba06.onrender.com/api/cliente',
+    urlPlace: 'https://unilocal-ba06.onrender.com/api/negocio',
     apiKey: 'pk.eyJ1IjoiaWFtanVhbmVzcyIsImEiOiJjbHNqNXZ2emkyaGdqMmxvMGp6cXF6MDN6In0.YIlLM2pI6yi8FNIUknR7QA',
 }
