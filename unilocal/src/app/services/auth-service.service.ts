@@ -5,6 +5,7 @@ import { ImagenService } from './imagen.service';
 import axios from 'axios';
 import { environment } from '../environments/environments';
 import { TokenService } from './token.service';
+import { LoginDto } from '../class/dto/login-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,35 @@ export class AuthServiceService {
           reject(error); // Rechaza la promesa con el error
         });
     });
+  }
+
+  loginUsuario(LoginDto: LoginDto) {
+    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-client`, LoginDto)
+      .then((response) => {
+        const payload = this.tokenService.decodePayload(response.data.respuesta.token);
+        const id = payload.id;
+        this.tokenService.loginUser(response.data.respuesta.token, id);
+        
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  }
+
+  loginMod(LoginDto: LoginDto) {
+    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-mod`, LoginDto)
+      .then((response) => {
+        const payload = this.tokenService.decodePayload(response.data.respuesta.token);
+        const id = payload.id;
+        this.tokenService.loginMod(response.data.respuesta.token, id);
+        
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  }
+
+  obtenerUsuarios() {
+    return axios.get(`${environment.urlClient}/get-all-users`);
   }
 }

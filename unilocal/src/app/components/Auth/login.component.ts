@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RegisterDto } from '../../class/dto/register-dto';
 import { AuthServiceService } from '../../services/auth-service.service';
+import { LoginDto } from '../../class/dto/login-dto';
+
 
 @Component({
   selector: 'app-login',
@@ -16,9 +18,11 @@ export class LoginComponent {
 
   haveAccount = true
   registerDto: RegisterDto
+  loginDto : LoginDto
 
   constructor(private authService: AuthServiceService) {
     this.registerDto = new RegisterDto();
+    this.loginDto = new LoginDto()
   }
   
   toggleAuth(){
@@ -30,6 +34,28 @@ export class LoginComponent {
     this.authService.registrarUsuario(this.registerDto).then((response) => {
       console.log('Cliente registrado')
     })
+  }
+
+  login() {
+    this.authService.obtenerUsuarios().then((response) => {
+      // Buscar el usuario por correo
+      const email = this.loginDto.email;
+      const usuario = response.data.find((u: { email: string; }) => u.email === email);
+      console.log(usuario)
+      if (usuario) {
+        // Verificar el rol y llamar al método correspondiente
+        if (usuario.role === 'USER') {
+          this.authService.loginUsuario(this.loginDto)
+        } else if (usuario.role === 'MOD') {
+          this.authService.loginMod(this.loginDto);
+        } else {
+          console.log('Rol no reconocido:', usuario.role);
+        }
+      } else {
+        console.log('Usuario no encontrado con el correo:', email);
+      }
+    });
+
   }
 
 }
