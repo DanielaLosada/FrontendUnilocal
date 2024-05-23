@@ -4,11 +4,12 @@ import { LoginComponent } from '../Auth/login.component';
 import { TokenService } from '../../services/token.service';
 import { ClienteService } from '../../services/cliente.service';
 import { response } from 'express';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [LoginComponent, CommonModule],
+  imports: [LoginComponent, CommonModule, RouterModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })

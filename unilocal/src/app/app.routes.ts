@@ -4,12 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterBusinessComponent } from './components/business/register-business/register-business.component';
 import { NavComponent } from './components/nav/nav.component';
 import { VerMapaComponent } from './components/ver-mapa/ver-mapa.component';
+import { MyPlacesComponent } from './components/my-places/my-places.component';
 
 
 export const routes: Routes = [
     {path: 'dashboard' , component: RegisterBusinessComponent},
-    {path: 'main' , component: NavComponent},
-    {path: 'verMapa', component: VerMapaComponent},
+    {
+        path: 'main', component: NavComponent, children: [
+            { path: 'my-places', component: MyPlacesComponent },
+        ]
+    },
+    
+    { path: 'verMapa', component: VerMapaComponent },
+
     {path : '**' , redirectTo: '/main', pathMatch: 'full'}
 ];
 

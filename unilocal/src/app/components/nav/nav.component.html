@@ -75,7 +75,7 @@
     <!-- aside -->
 
     <aside
-      class="flex w-60 flex-col space-y-2 border-r-2 border-gray-200 bg-white"
+      class="flex w-60 flex-col h-full space-y-2 border-r-2 border-gray-200 bg-white"
       *ngIf="asideOpen"
     >
       <a
@@ -97,7 +97,7 @@
       </a>
 
       <a
-        href="#"
+        routerLink="/main/my-places"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"><i class="fa-solid fa-folder-open"></i></span>
@@ -121,8 +121,11 @@
     </aside>
 
     <!-- main content page -->
-    <div class="w-full p-4">
+    <div class="w-full p-4" *ngIf="!userLoginOn">
       <app-login></app-login>
+    </div>
+    <div class="ml-6 mt-6">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </main>

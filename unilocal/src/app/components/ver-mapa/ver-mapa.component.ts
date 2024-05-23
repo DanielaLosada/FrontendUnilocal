@@ -17,10 +17,6 @@ export class VerMapaComponent {
   constructor(private mapaService: MapService,private localService: LocalService,
     private tokenService: TokenService) {
       this.createPlaceDto = new CreatePlaceDto();
-      this.horarios = [new Horario()];
-      this.tipos = [];
-      this.cargarTipos();
-    
   }
 
   ngOnInit(): void {

@@ -40,24 +40,16 @@ export class LoginComponent {
       console.log('Error al registrar cliente', error)
     })
   }
-
-<<<<<<< HEAD
-    handleFotoSeleccionada(event: any) {
-=======
+  
   handleFotoSeleccionada(event: any) {
->>>>>>> c43c43d4d0964a8799b653f0ffc078127a68c40d
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       this.registerDto.fotoPerfil = file;
-<<<<<<< HEAD
-    }}
-=======
     }
   }
       
->>>>>>> c43c43d4d0964a8799b653f0ffc078127a68c40d
   login() {
     this.authService.obtenerUsuarios().then((response) => {
       // Buscar el usuario por correo
