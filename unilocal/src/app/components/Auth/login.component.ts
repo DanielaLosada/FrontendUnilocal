@@ -38,15 +38,13 @@ export class LoginComponent {
     })
   }
 
-<<<<<<< HEAD
     handleFotoSeleccionada(event: any) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       this.registerDto.fotoPerfil = file;
-    }
-=======
+    }}
   login() {
     this.authService.obtenerUsuarios().then((response) => {
       // Buscar el usuario por correo
@@ -67,7 +65,6 @@ export class LoginComponent {
       }
     });
 
->>>>>>> 5c89c4850712fec210084a6f97a04ae69581a499
   }
 
 }
