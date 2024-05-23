@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterDto } from '../../class/dto/register-dto';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { LoginDto } from '../../class/dto/login-dto';
+import { TokenService } from '../../services/token.service';
 
 
 @Component({
@@ -16,18 +17,20 @@ import { LoginDto } from '../../class/dto/login-dto';
 })
 export class LoginComponent {
 
-  haveAccount = true
-  registerDto: RegisterDto
-  loginDto : LoginDto
+  haveAccount = true;
+  registerDto: RegisterDto;
+  loginDto: LoginDto;
 
-  constructor(private authService: AuthServiceService) {
+
+  constructor(private authService: AuthServiceService,
+    private tokenService: TokenService
+  ) {
     this.registerDto = new RegisterDto();
     this.loginDto = new LoginDto()
   }
   
   toggleAuth(){
     this.haveAccount = !this.haveAccount;
-
   }
 
   registrarUsuario() {
@@ -52,9 +55,7 @@ export class LoginComponent {
       // Buscar el usuario por correo
       const email = this.loginDto.email;
       const usuario = response.data.find((u: { email: string; }) => u.email === email);
-      console.log(usuario)
       if (usuario) {
-        // Verificar el rol y llamar al método correspondiente
           this.authService.loginUsuario(this.loginDto)
       } else {
         console.log('Usuario no encontrado con el correo:', email);

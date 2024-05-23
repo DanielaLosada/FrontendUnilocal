@@ -52,16 +52,16 @@ export class TokenService {
   public loginMod(token: string, id:string) {
     this.setToken(token);
     this.toastr.success('✅ Iniciando sesión como moderador', 'UNILOCAL')
-    this.router.navigate([`/dashboard-mod/${id}`]).then(() => {
-      window.location.reload();
-    });
+    window.location.reload();
   }
 
 
   public logout() {
     window.sessionStorage.clear();
     this.loggedInSubject.next(false)
-    this.router.navigate(["/login"])
+    this.router.navigate([""]).then(() => {
+      window.location.reload();
+    })
   }
 
   public signup(token: string, id: string) {
