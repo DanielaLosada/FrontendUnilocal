@@ -83,13 +83,13 @@ export class RegisterBusinessComponent {
   }
 
   private cargarTipos() {
-    this.publicService.listarTiposNegocio().then((response) => {
-      // Iterar sobre cada objeto Tipo en response.data
-      this.tipos = response.data.map((tipo: Tipo) => tipo.tipo);
-    })
-    .catch((error) => {
-      console.log("Error al obtener los tipos")
-    })
+    // this.publicService.listarTiposNegocio().then((response) => {
+    //   // Iterar sobre cada objeto Tipo en response.data
+    //   this.tipos = response.data.map((tipo: Tipo) => tipo.tipo);
+    // })
+    // .catch((error) => {
+    //   console.log("Error al obtener los tipos")
+    // })
   }
   
 
