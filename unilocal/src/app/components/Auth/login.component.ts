@@ -40,7 +40,6 @@ export class LoginComponent {
       console.log('Error al registrar cliente', error)
     })
   }
-  
   handleFotoSeleccionada(event: any) {
     const file = event.target.files[0];
     if (file) {
