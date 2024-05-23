@@ -5,7 +5,7 @@
         center center;
   }
 </style>
-<div class="h-screen flex ">
+<div class="h-screen flex">
   <div
     class="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center"
   >
@@ -76,7 +76,7 @@
             name="password"
             id="password"
             placeholder="Password"
-            [(ngModel)]="loginDto.password"
+            [(ngModel)]="loginDto.contrasenia"
           />
         </div>
         <button
@@ -106,9 +106,9 @@
   <!--Register-->
   <div
     *ngIf="haveAccount !== true"
-    class="flex w-full lg:w-1/2 justify-center items-center bg-slate-200 space-y-8 "
+    class="flex w-full lg:w-1/2 justify-center items-center bg-slate-200 space-y-8"
   >
-    <div class="w-full px-8 md:px-32 lg:px-24 ">
+    <div class="w-full px-8 md:px-32 lg:px-24">
       <form class="bg-white rounded-md shadow-2xl p-5" #f="ngForm">
         <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello!!</h1>
         <p class="text-sm font-normal text-gray-600 mb-8">Welcome</p>
