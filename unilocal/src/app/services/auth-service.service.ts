@@ -44,12 +44,12 @@ export class AuthServiceService {
   }
 
   loginUsuario(LoginDto: LoginDto) {
-    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-client`, LoginDto)
+    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-cliente`, LoginDto)
       .then((response) => {
         const payload = this.tokenService.decodePayload(response.data.respuesta.token);
         const id = payload.id;
         this.tokenService.loginUser(response.data.respuesta.token, id);
-        
+        console.log("Inicio sesion")
       })
       .catch((error) => {
         console.log('Error:', error);
@@ -57,7 +57,7 @@ export class AuthServiceService {
   }
 
   loginMod(LoginDto: LoginDto) {
-    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-mod`, LoginDto)
+    axios.post<MensajeAuthDto>(`${environment.urlAuth}/login-administrador`, LoginDto)
       .then((response) => {
         const payload = this.tokenService.decodePayload(response.data.respuesta.token);
         const id = payload.id;

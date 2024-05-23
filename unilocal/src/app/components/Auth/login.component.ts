@@ -38,13 +38,23 @@ export class LoginComponent {
     })
   }
 
+<<<<<<< HEAD
     handleFotoSeleccionada(event: any) {
+=======
+  handleFotoSeleccionada(event: any) {
+>>>>>>> c43c43d4d0964a8799b653f0ffc078127a68c40d
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       this.registerDto.fotoPerfil = file;
+<<<<<<< HEAD
     }}
+=======
+    }
+  }
+      
+>>>>>>> c43c43d4d0964a8799b653f0ffc078127a68c40d
   login() {
     this.authService.obtenerUsuarios().then((response) => {
       // Buscar el usuario por correo
@@ -53,13 +63,7 @@ export class LoginComponent {
       console.log(usuario)
       if (usuario) {
         // Verificar el rol y llamar al método correspondiente
-        if (usuario.role === 'USER') {
           this.authService.loginUsuario(this.loginDto)
-        } else if (usuario.role === 'MOD') {
-          this.authService.loginMod(this.loginDto);
-        } else {
-          console.log('Rol no reconocido:', usuario.role);
-        }
       } else {
         console.log('Usuario no encontrado con el correo:', email);
       }
