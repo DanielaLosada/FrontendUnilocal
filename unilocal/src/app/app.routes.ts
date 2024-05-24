@@ -5,9 +5,11 @@ import { RegisterBusinessComponent } from './components/business/register-busine
 import { NavComponent } from './components/nav/nav.component';
 import { VerMapaComponent } from './components/ver-mapa/ver-mapa.component';
 import { MyPlacesComponent } from './components/my-places/my-places.component';
+import { DetailBusinessComponent } from './components/detail-business/detail-business.component';
 
 
 export const routes: Routes = [
+    {path: 'detail/:id', component: DetailBusinessComponent},
     {path: 'dashboard' , component: RegisterBusinessComponent},
     {
         path: 'main', component: NavComponent, children: [
@@ -17,7 +19,7 @@ export const routes: Routes = [
     
     { path: 'verMapa', component: VerMapaComponent },
 
-    {path : '**' , redirectTo: '/main', pathMatch: 'full'}
+    {path : '**' , redirectTo: '/main', pathMatch: 'full'},
 ];
 
 @NgModule({
