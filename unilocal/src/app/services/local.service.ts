@@ -63,6 +63,15 @@ export class LocalService {
     const headers: AxiosRequestConfig['headers'] = {
       Authorization: `Bearer ${token}`
     };
-    return axios.get<Lugar>(`${environment.urlPlace}/get-place/${idLugar}`, {headers});
+    return axios.get<Lugar>(`${environment.urlPlace}/obtener-negocio/${idLugar}`, {headers});
+  }
+
+  listarNegociosUsuario(idUser: string) {
+    // Configurar el token JWT en el encabezado Authorization
+    const token = this.tokenService.getToken(); // Función para obtener el token JWT
+    const headers: AxiosRequestConfig['headers'] = {
+      Authorization: `Bearer ${token}`
+    };
+    return axios.get(`${environment.urlPlace}/listar-negocios-usuario/${idUser}`, {headers});
   }
 }
