@@ -3,7 +3,7 @@ import { MapService } from '../../services/map.service';
 // import { LocalService } from '../../services/local.service';
 // import { TokenService } from '../../services/token.service';
 import { CreatePlaceDto } from '../../class/dto/create-place-dto';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { PlacesService } from '../../services/places.service';
 import { Feature } from '../../interfaces/places';
 import {  Router, RouterModule } from '@angular/router';
@@ -13,7 +13,7 @@ import {  Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-ver-mapa',
   standalone: true,
-  imports: [NgFor,NgIf, RouterModule],
+  imports: [NgFor,NgIf, RouterModule,NgClass],
   templateUrl: './ver-mapa.component.html',
   styleUrl: './ver-mapa.component.css'
 })
@@ -23,9 +23,8 @@ export class VerMapaComponent {
   
    private debounceTimer?: NodeJS.Timeout;
    public selectedId: string = '';
-   
-   
-
+   public showSerach : boolean = true
+  
   
    
 
@@ -64,6 +63,7 @@ export class VerMapaComponent {
 
       this.placesService.getPlacesByQuery(query);
       this.mapaService.removeRouteLayerAndSource();
+      this.showSerach = true
     }, 500);
   }
 
@@ -72,8 +72,10 @@ export class VerMapaComponent {
     this.selectedId  = place.id;
     
     const [lng, lat] = place.center;
-
+    
+    this.showSerach=false
     this.mapaService.flyTo([lng, lat]);
+
   }
 
   get places(): Feature[] {
@@ -93,13 +95,10 @@ export class VerMapaComponent {
       });
     }
   }
-  navegar(lugarId: string) {
-
-    let id = this.extactId(lugarId)
+  navegar(lugarId: string, additionalData: any): void {
+    let id = this.extactId(lugarId);
     console.log(id);
-    this.router.navigate([`detail/${id}`]).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate([`detail/${id}`], { queryParams: { data: JSON.stringify(additionalData) } });
   }
 
 }

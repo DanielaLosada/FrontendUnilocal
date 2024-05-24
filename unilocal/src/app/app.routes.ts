@@ -9,17 +9,11 @@ import { DetailBusinessComponent } from './components/detail-business/detail-bus
 
 
 export const routes: Routes = [
-    {path: 'detail/:id', component: DetailBusinessComponent},
-    {path: 'dashboard' , component: RegisterBusinessComponent},
-    {
-        path: 'main', component: NavComponent, children: [
-            { path: 'my-places', component: MyPlacesComponent },
-        ]
-    },
     
+    {path: 'main', component: NavComponent},
     { path: 'verMapa', component: VerMapaComponent },
-
     {path : '**' , redirectTo: '/main', pathMatch: 'full'},
+    
 ];
 
 @NgModule({

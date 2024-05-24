@@ -71,15 +71,15 @@
     </div>
   </header>
 
-  <div class="flex">
+  <div class="flex ">
     <!-- aside -->
 
     <aside
-      class="flex w-60 flex-col h-full space-y-2 border-r-2 border-gray-200 bg-white"
+      class="flex w-60 flex-col h-screen space-y-2 border-r-2 border-gray-200 bg-white"
       *ngIf="asideOpen"
     >
       <a
-        href="#"
+        (click)="abrirDashboard()"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"><i class="fa-solid fa-chart-line"></i></span>
@@ -87,7 +87,7 @@
       </a>
 
       <a
-        href="#"
+        (click)="abrirMapa()"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"
@@ -97,7 +97,7 @@
       </a>
 
       <a
-        routerLink="/main/my-places"
+        (click)="abrirMyPlaces()"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"><i class="fa-solid fa-folder-open"></i></span>
@@ -105,14 +105,14 @@
       </a>
 
       <a
-        href="#"
+        (click)="abrirMyFavorites()"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"><i class="bx bx-heart"></i></span>
         <span>My Favourite</span>
       </a>
       <a
-        href="#"
+        (click)="abrirRegistrarNegocio()"
         class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
       >
         <span class="text-2xl"><i class="fa-solid fa-shop"></i></span>
@@ -124,8 +124,17 @@
     <div class="w-full p-4" *ngIf="!userLoginOn">
       <app-login></app-login>
     </div>
-    <div class="ml-6 mt-6">
-      <router-outlet></router-outlet>
+    <div *ngIf="myPlaces" class="flex-grow row ml-6 mt-6">
+      <app-my-places
+        *ngFor="let lugar of lugaresCliente"
+        [lugar]="lugar"
+      ></app-my-places>
+    </div>
+    <div *ngIf="myMap" class="flex-grow row">
+      <app-ver-mapa></app-ver-mapa>
+    </div>
+    <div *ngIf="myCreate" class="flex-grow row">
+      <app-register-business></app-register-business>
     </div>
   </div>
 </main>

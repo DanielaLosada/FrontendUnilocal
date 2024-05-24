@@ -29,11 +29,11 @@
       <i class="fa-solid fa-arrow-left"></i>
     </button>
 
-    <div class="flex overflow-x-auto places-container">
-      <div class="p-4 bg-blue-400 rounded-lg my-2 mx-2 place-card" *ngFor="let place of places">
+    <div class="flex overflow-x-auto places-container " >
+      <div class="p-4 bg-blue-400 rounded-lg my-2 mx-2 place-card" *ngFor="let place of places" [ngClass]="{'hidden': showSerach === false}">
         <h2 class="text-black font-semibold">{{ place.text_es }}</h2>
         <p class="text-indigo-950">{{ place.place_name }}</p>
-        <a class="text-black hover:cursor-pointer"(click)="navegar(place.id)" >ver mas...</a>
+        <a class="text-black hover:cursor-pointer"(click)="flyTo(place)" >ver mas...</a>
       </div>
     </div>
 

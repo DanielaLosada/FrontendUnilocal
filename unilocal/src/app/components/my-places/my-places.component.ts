@@ -1,34 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Lugar } from '../../class/models/lugar';
 import { LocalService } from '../../services/local.service';
 import { TokenService } from '../../services/token.service';
-import { response } from 'express';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-places',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './my-places.component.html',
   styleUrl: './my-places.component.css'
 })
 export class MyPlacesComponent {
-
-  lugaresCliente: Lugar = {} as Lugar
-  idUser: string = '';
+  @Input() lugar!: any
+  currentImageIndex: number = 0;
+  intervalId: any;
 
   constructor(private localService: LocalService,
     private tokenService: TokenService
   ){}
 
   ngOnInit() {
-    this.idUser = this.tokenService.getCodigo();
-    this.obtenerMisNegocios()
+    this.startImageCarousel();
   }
 
-  obtenerMisNegocios() {
-    this.localService.listarNegociosUsuario(this.idUser).then((response) => {
-      console.log(response.data)
-    })
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
+
+  startImageCarousel(): void {
+    this.intervalId = setInterval(() => {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.lugar.listaImagenes.length;
+    }, 4500); // Cambia la imagen cada 4.5 segundos
   }
 
 }
