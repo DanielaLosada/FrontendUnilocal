@@ -1,23 +1,22 @@
 import { Horario } from "./horario";
+import { Ubicacion } from "./ubicacion";
 
 export class Lugar {
     map(arg0: (lugar: Lugar) => Lugar): Lugar[] {
       throw new Error('Method not implemented.');
     }
     constructor(
-        public id: number = 0,
-        public description: string = '',
-        public name: string = '',
-        public schedule: any[] = [],
-        public images: string[] = [],
-        public comments: string[] = [],
-        public businessType: string = '',
-        public phones: string[] = [],
-        public stateBusiness: string = '',
-        public owner: string = '',
-        public location: Location = new Location(),
-        public qualifications: number[] = [],
-        public revisions: number[] = []
+        public codigo: string = '',
+        public descripcion: string = '',
+        public nombre: string = '',
+        public listHorarios: any[] = [],
+        public listImagenes: string[] = [],
+        public tipoNegocio: string = '',
+        public listTelefonos: string[] = [],
+        public estadoRegistro: any = '',
+        public codigoCliente: string = '',
+        public ubicacion: Ubicacion = new Ubicacion(),
+        public listRevisiones: number[] = []
 
     ){}
 }

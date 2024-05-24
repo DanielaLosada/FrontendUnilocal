@@ -8,11 +8,8 @@ import { MyPlacesComponent } from './components/my-places/my-places.component';
 
 
 export const routes: Routes = [
-    {path: 'dashboard' , component: RegisterBusinessComponent},
     {
-        path: 'main', component: NavComponent, children: [
-            { path: 'my-places', component: MyPlacesComponent },
-        ]
+        path: 'main', component: NavComponent
     },
     
     { path: 'verMapa', component: VerMapaComponent },

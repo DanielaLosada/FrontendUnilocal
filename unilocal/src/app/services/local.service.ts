@@ -23,9 +23,9 @@ export class LocalService {
 
   public async crearLugar(createPlaceDto: CreatePlaceDto) {
     // Convertir FileList a un arreglo de archivos
-    const imagesToUpload: File[] = Array.from(createPlaceDto.images);
+    const imagesToUpload: File[] = Array.from(createPlaceDto.listImagenes);
     const images: string[] = [];
-    const id: string = createPlaceDto.owner;
+    const id: string = createPlaceDto.codigoCliente;
         // Subir cada imagen a Cloudinary
     const uploadPromises = imagesToUpload.map(photo => this.imagenesService.subirImagen(photo).then(response => (
       images.push(response.data.respuesta.secure_url)
@@ -34,7 +34,7 @@ export class LocalService {
     // Esperar a que todas las imágenes se suban
     await Promise.all(uploadPromises);
 
-    createPlaceDto.images = images;
+    createPlaceDto.listImagenes = images;
 
     // Configurar el token JWT en el encabezado Authorization
     const token = this.tokenService.getToken(); // Función para obtener el token JWT
@@ -50,9 +50,6 @@ export class LocalService {
     ).catch((error) => {
       this.toastrService.error('❌ Error al crear el lugar', 'UNILOCAL');
       return error.error;
-    });
-    this.router.navigate([`/dashboard-user/${{id}}`]).then(() => {
-      window.location.reload();
     });
   }
 
