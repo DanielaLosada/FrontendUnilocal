@@ -1,17 +1,18 @@
 import { Horario } from "../../class/models/horario";
-import { Location } from "../../class/models/location";
+import { Ubicacion } from "../models/ubicacion";
 
 
 export class CreatePlaceDto {
 
     constructor(
-        public description: string = '',
-        public name: string = '',
-        public schedules: Horario[] = [new Horario()],
-        public images: any[] = [],
-        public businessType: any = '',
-        public owner: string = '',
-        public location: Location = new Location,
-        public phones: any[] = []
+        public nombre: string = '',
+        public descripcion: string = '',
+        public listImagenes: any[] = [],
+        public listTelefonos: any[] = [],
+        public ubicacion: Ubicacion = {} as Ubicacion,
+        public codigoCliente: string = '',
+        public listHorarios: Horario[] = [new Horario()],
+        public tipoNegocio: any = {} as any,
+        public direccion: string = ''
     ) { }
 }

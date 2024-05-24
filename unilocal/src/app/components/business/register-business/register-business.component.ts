@@ -46,16 +46,17 @@ export class RegisterBusinessComponent {
   ngOnInit(): void {
     this.mapaService.crearMapa();
     this.mapaService.agregarMarcador().subscribe((marcador) => {
-      this.createPlaceDto.location.lat = marcador.lat;
-      this.createPlaceDto.location.lng = marcador.lng;
+      this.createPlaceDto.ubicacion.latitud = marcador.lat;
+      this.createPlaceDto.ubicacion.longitud = marcador.lng;
     });
   }
 
   public crearNegocio() {
     const idUser = this.tokenService.getCodigo();
-    this.createPlaceDto.schedules = this.horarios;
-    this.createPlaceDto.phones = this.phones;
-    this.createPlaceDto.owner = idUser;
+    this.createPlaceDto.listHorarios = this.horarios;
+    this.createPlaceDto.listTelefonos = this.phones;
+    this.createPlaceDto.codigoCliente = idUser;
+    this.createPlaceDto.direccion = idUser;
     this.localService.crearLugar(this.createPlaceDto);
   }
 
@@ -78,7 +79,7 @@ export class RegisterBusinessComponent {
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
       const files = event.target.files;
-      this.createPlaceDto.images = files;
+      this.createPlaceDto.listImagenes = files;
     }
   }
 
@@ -90,6 +91,7 @@ export class RegisterBusinessComponent {
     // .catch((error) => {
     //   console.log("Error al obtener los tipos")
     // })
+    this.tipos = ["PANADERIA", "OTROS"];
   }
   
 

@@ -9,8 +9,10 @@ import { DetailBusinessComponent } from './components/detail-business/detail-bus
 
 
 export const routes: Routes = [
+    {
+        path: 'main', component: NavComponent
+    },
     
-    {path: 'main', component: NavComponent},
     { path: 'verMapa', component: VerMapaComponent },
     {path : '**' , redirectTo: '/main', pathMatch: 'full'},
     

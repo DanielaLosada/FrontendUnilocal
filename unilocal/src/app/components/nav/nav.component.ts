@@ -10,7 +10,6 @@ import { VerMapaComponent } from '../ver-mapa/ver-mapa.component';
 import { RegisterBusinessComponent } from '../business/register-business/register-business.component';
 import { Lugar } from '../../class/models/lugar';
 import { LocalService } from '../../services/local.service';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',

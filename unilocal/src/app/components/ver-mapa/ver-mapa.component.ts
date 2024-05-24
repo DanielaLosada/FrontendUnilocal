@@ -40,8 +40,8 @@ export class VerMapaComponent {
   ngOnInit(): void {
     this.mapaService.crearMapa();
     this.mapaService.agregarMarcador().subscribe((marcador) => {
-      this.createPlaceDto.location.lat = marcador.lat;
-      this.createPlaceDto.location.lng = marcador.lng;
+      this.createPlaceDto.ubicacion.latitud = marcador.lat;
+      this.createPlaceDto.ubicacion.longitud = marcador.lng;
     });
   }
 
