@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    production: true,
     urlImagen: 'https://unilocal-ba06.onrender.com/api/imagenes',
     urlAuth: 'https://unilocal-ba06.onrender.com/api/auth',
     urlClient: 'https://unilocal-ba06.onrender.com/api/cliente',
