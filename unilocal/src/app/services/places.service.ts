@@ -3,6 +3,8 @@ import { Feature, PlacesResponse } from '../interfaces/places';
 
 import { PlacesApiClient } from '../api/placeApiClient';
 import { MapService } from './map.service';
+import axios from 'axios';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -150,6 +152,12 @@ export class PlacesService {
   private calculateDistanceFromUser(place: Feature): number {
     return this.calculateDistance(place);
   }
+
+  // Función para obtener todos los lugares 
+  public getAllPlacesActives(){
+    return axios.get(`${environment.urlPlace}/getPlacesActives`)
+    
+  } 
 
   deletePlaces() {
     this.places = [];

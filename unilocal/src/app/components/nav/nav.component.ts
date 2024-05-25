@@ -10,6 +10,7 @@ import { VerMapaComponent } from '../ver-mapa/ver-mapa.component';
 import { RegisterBusinessComponent } from '../business/register-business/register-business.component';
 import { Lugar } from '../../class/models/lugar';
 import { LocalService } from '../../services/local.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-nav',
@@ -19,11 +20,13 @@ import { LocalService } from '../../services/local.service';
     RouterModule,
     MyPlacesComponent,
     VerMapaComponent,
-  RegisterBusinessComponent],
+  RegisterBusinessComponent,
+DashboardComponent],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
+  hiddenLogin = false;
   asideOpen = true;
   profileOpen = false;
   userLoginOn: boolean = false;
@@ -96,6 +99,7 @@ export class NavComponent {
     this.myDashboard = false;
     this.myFavorites = false;
     this.myMap = false;
+    this.hiddenLogin = true
   }
 
   abrirMyFavorites() {
@@ -104,6 +108,7 @@ export class NavComponent {
     this.myDashboard = false;
     this.myFavorites = !this.myFavorites;
     this.myMap = false;
+    this.hiddenLogin = true
   }
 
   abrirMapa() {
@@ -112,6 +117,7 @@ export class NavComponent {
     this.myDashboard = false;
     this.myFavorites = false;
     this.myMap = !this.myMap;
+    this.hiddenLogin = true
   }
 
   abrirRegistrarNegocio() {
@@ -120,6 +126,7 @@ export class NavComponent {
     this.myDashboard = false;
     this.myFavorites = false;
     this.myMap = false;
+    this.hiddenLogin = true
   }
 
   abrirDashboard() {
@@ -128,6 +135,7 @@ export class NavComponent {
     this.myDashboard = !this.myDashboard;
     this.myFavorites = false;
     this.myMap = false;
+    this.hiddenLogin = true
   }
   abrirDetail() {
     this.detailOpen = !this.detailOpen
@@ -136,6 +144,7 @@ export class NavComponent {
     this.myDashboard = false;
     this.myFavorites = false;
     this.myMap = false;
+    this.hiddenLogin = true
   }
 
 }

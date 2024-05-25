@@ -29,8 +29,10 @@ export class LoginComponent {
     this.loginDto = new LoginDto()
   }
   
-  toggleAuth(){
+  toggleAuth(event: Event){
+    event.preventDefault();
     this.haveAccount = !this.haveAccount;
+
   }
 
   registrarUsuario() {

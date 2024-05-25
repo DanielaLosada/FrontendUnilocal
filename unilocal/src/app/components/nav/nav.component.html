@@ -120,8 +120,10 @@
       </a>
     </aside>
 
+    
     <!-- main content page -->
-    <div class="w-full p-4" *ngIf="!userLoginOn">
+
+    <div class="w-full p-4" [ngClass]="{'hidden': hiddenLogin}" *ngIf="!userLoginOn">
       <app-login></app-login>
     </div>
     <div *ngIf="myPlaces" class="flex-grow row ml-6 mt-6">
@@ -136,6 +138,10 @@
     <div *ngIf="myCreate" class="flex-grow row">
       <app-register-business></app-register-business>
     </div>
+    <div *ngIf="myDashboard" class="flex-grow row">
+      <app-dashboard></app-dashboard>  
+    </div>
+
   </div>
 </main>
 
